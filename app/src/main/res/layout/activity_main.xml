@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/TextView2"
+        android:id="@+id/StudentsList"
         android:layout_width="263dp"
         android:layout_height="333dp"
         android:text="List"

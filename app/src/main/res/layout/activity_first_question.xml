@@ -24,7 +24,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Actividades de preparacióm"
+        android:text="Actividades de preparación"
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -47,7 +47,7 @@
         app:layout_constraintVertical_bias="0.938" />
 
     <CheckBox
-        android:id="@+id/checkBoxB1"
+        android:id="@+id/checkBoxA1"
         android:layout_width="335dp"
         android:layout_height="68dp"
         android:layout_marginStart="28dp"
@@ -62,7 +62,7 @@
         app:layout_constraintVertical_bias="0.333" />
 
     <CheckBox
-        android:id="@+id/checkBoxB3"
+        android:id="@+id/checkBoxA3"
         android:layout_width="335dp"
         android:layout_height="66dp"
         android:layout_marginStart="28dp"
@@ -77,7 +77,7 @@
         app:layout_constraintVertical_bias="0.581" />
 
     <CheckBox
-        android:id="@+id/checkBoxB2"
+        android:id="@+id/checkBoxA2"
         android:layout_width="335dp"
         android:layout_height="66dp"
         android:layout_marginStart="28dp"
