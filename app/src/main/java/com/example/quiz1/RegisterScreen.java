@@ -34,7 +34,7 @@ public class RegisterScreen extends AppCompatActivity {
     public void switchScreen()
     {
         name = textName.getText().toString();
-        code = textName.getText().toString();
+        code = textCode.getText().toString();
 
         Intent switchActivity = new Intent(this, FirstQuestion.class);
         switchActivity.putExtra("name", name);

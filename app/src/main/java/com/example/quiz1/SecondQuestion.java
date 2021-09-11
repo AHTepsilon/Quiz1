@@ -16,6 +16,8 @@ public class SecondQuestion extends AppCompatActivity {
     int newScore;
     String scoreString;
 
+    String name, code;
+
     boolean box1AChecked;
     boolean box1BChecked;
     boolean box1CChecked;
@@ -28,6 +30,9 @@ public class SecondQuestion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second_question);
+
+        name = getIntent().getStringExtra("name");
+        code = getIntent().getStringExtra("code");
 
         box1AChecked = getIntent().getBooleanExtra("firstQuestionResult", false);
         box1BChecked = getIntent().getBooleanExtra("secondQuestionResult", false);
@@ -58,6 +63,9 @@ public class SecondQuestion extends AppCompatActivity {
         Log.d("score", String.valueOf(newScore));
 
         Intent switchActivity = new Intent(this, MainActivity.class);
+        switchActivity.putExtra("name", name);
+        switchActivity.putExtra("code", code);
+        switchActivity.putExtra("score", String.valueOf(newScore));
         startActivity(switchActivity);
     }
 
