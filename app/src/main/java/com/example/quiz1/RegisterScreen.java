@@ -23,9 +23,6 @@ public class RegisterScreen extends AppCompatActivity {
         textName = findViewById(R.id.nameText);
         textCode = findViewById(R.id.codeText);
 
-        name = textName.getText().toString();
-        code = textName.getText().toString();
-
         continueBtn.setOnClickListener(
                 (view) ->
                 {
@@ -36,7 +33,12 @@ public class RegisterScreen extends AppCompatActivity {
 
     public void switchScreen()
     {
+        name = textName.getText().toString();
+        code = textName.getText().toString();
+
         Intent switchActivity = new Intent(this, FirstQuestion.class);
+        switchActivity.putExtra("name", name);
+        switchActivity.putExtra("code", code);
         startActivity(switchActivity);
     }
 }
