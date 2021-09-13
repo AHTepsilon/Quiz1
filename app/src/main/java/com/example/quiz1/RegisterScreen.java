@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -36,9 +37,12 @@ public class RegisterScreen extends AppCompatActivity {
         name = textName.getText().toString();
         code = textCode.getText().toString();
 
-        Intent switchActivity = new Intent(this, FirstQuestion.class);
-        switchActivity.putExtra("name", name);
-        switchActivity.putExtra("code", code);
-        startActivity(switchActivity);
+        if(!name.isEmpty() && !code.isEmpty())
+        {
+            Intent switchActivity = new Intent(this, FirstQuestion.class);
+            switchActivity.putExtra("name", name);
+            switchActivity.putExtra("code", code);
+            startActivity(switchActivity);
+        }
     }
 }
