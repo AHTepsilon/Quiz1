@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -27,21 +28,14 @@ public class MainActivity extends AppCompatActivity {
         code = getIntent().getStringExtra("code");
         score = getIntent().getStringExtra("score");
 
-        if(name == null)
+        if(name != null && code != null && score != null)
         {
-            name = "";
+            studentListItem += name + ", " + code + " / pts: " + score + "\n";
         }
-        if(code == null)
-        {
-            code = "";
-        }
-        if(score == null)
-        {
-            score = "";
-        }
+
         else
         {
-            studentListItem += name + ", " + code + " / pts: " + score;
+            studentListItem = "";
         }
 
         studentList.setText(studentListItem);

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 public class FirstQuestion extends AppCompatActivity {
 
@@ -47,6 +48,8 @@ public class FirstQuestion extends AppCompatActivity {
     {
         checkBoxes();
 
+        if(box1AChecked || box1BChecked || box1CChecked)
+        {
         scoreString = String.valueOf(score);
 
         Intent switchActivity = new Intent(this, SecondQuestion.class);
@@ -58,6 +61,11 @@ public class FirstQuestion extends AppCompatActivity {
         switchActivity.putExtra("code", code);
 
         startActivity(switchActivity);
+        }
+        else
+        {
+            Toast.makeText(this, "Por favor seleccione al menos una casilla", Toast.LENGTH_SHORT);
+        }
     }
 
     public void checkBoxes()

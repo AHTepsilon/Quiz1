@@ -60,13 +60,15 @@ public class SecondQuestion extends AppCompatActivity {
     {
         checkBoxes();
 
-        Log.d("score", String.valueOf(newScore));
+        if(box2AChecked || box2BChecked || box2CChecked) {
+            Log.d("score", String.valueOf(newScore));
 
-        Intent switchActivity = new Intent(this, MainActivity.class);
-        switchActivity.putExtra("name", name);
-        switchActivity.putExtra("code", code);
-        switchActivity.putExtra("score", String.valueOf(newScore));
-        startActivity(switchActivity);
+            Intent switchActivity = new Intent(this, MainActivity.class);
+            switchActivity.putExtra("name", name);
+            switchActivity.putExtra("code", code);
+            switchActivity.putExtra("score", String.valueOf(newScore));
+            startActivity(switchActivity);
+        }
     }
 
     public void checkBoxes()
