@@ -28,15 +28,17 @@ public class MainActivity extends AppCompatActivity {
         code = getIntent().getStringExtra("code");
         score = getIntent().getStringExtra("score");
 
+        studentListItem = "";
+
         if(name != null && code != null && score != null)
         {
             studentListItem += name + ", " + code + " / pts: " + score + "\n";
         }
 
-        else
-        {
-            studentListItem = "";
-        }
+        //else
+        //{
+        //    studentListItem = "";
+       // }
 
         studentList.setText(studentListItem);
 
