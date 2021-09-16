@@ -8,6 +8,9 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import com.example.quiz1.model.Student;
+import com.google.gson.Gson;
+
 public class SecondQuestion extends AppCompatActivity {
 
     Button endBtn;
@@ -61,6 +64,12 @@ public class SecondQuestion extends AppCompatActivity {
         checkBoxes();
 
         if(box2AChecked || box2BChecked || box2CChecked) {
+            Student stdnt = new Student(name, code, String.valueOf(newScore));
+
+            Gson gson = new Gson();
+            String json = gson.toJson(stdnt);
+
+            Log.d(">>>", "" + json);
             Log.d("score", String.valueOf(newScore));
 
             Intent switchActivity = new Intent(this, MainActivity.class);

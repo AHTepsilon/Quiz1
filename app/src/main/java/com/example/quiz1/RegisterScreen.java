@@ -3,10 +3,13 @@ package com.example.quiz1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.google.gson.Gson;
 
 public class RegisterScreen extends AppCompatActivity {
 
@@ -39,10 +42,24 @@ public class RegisterScreen extends AppCompatActivity {
 
         if(!name.isEmpty() && !code.isEmpty())
         {
+
             Intent switchActivity = new Intent(this, FirstQuestion.class);
             switchActivity.putExtra("name", name);
             switchActivity.putExtra("code", code);
             startActivity(switchActivity);
         }
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
     }
 }
