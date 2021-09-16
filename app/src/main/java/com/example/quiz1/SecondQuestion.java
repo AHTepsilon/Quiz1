@@ -3,6 +3,7 @@ package com.example.quiz1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -72,10 +73,19 @@ public class SecondQuestion extends AppCompatActivity {
             Log.d(">>>", "" + json);
             Log.d("score", String.valueOf(newScore));
 
+            SharedPreferences preferences = getApplicationContext().getSharedPreferences("prefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("lastName", name);
+            editor.putString("lastCode", code);
+            editor.putString("lastScore", String.valueOf(newScore));
+
+            editor.commit();
+
             Intent switchActivity = new Intent(this, MainActivity.class);
             switchActivity.putExtra("name", name);
             switchActivity.putExtra("code", code);
             switchActivity.putExtra("score", String.valueOf(newScore));
+            switchActivity.putExtra("json", json);
             startActivity(switchActivity);
         }
     }
@@ -100,5 +110,10 @@ public class SecondQuestion extends AppCompatActivity {
         {
             newScore += 0;
         }
+    }
+
+    public void loadPreferences()
+    {
+
     }
 }

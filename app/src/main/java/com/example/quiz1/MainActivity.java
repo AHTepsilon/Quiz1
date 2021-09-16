@@ -3,10 +3,14 @@ package com.example.quiz1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.quiz1.model.Student;
+import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     TextView studentList;
     String studentListItem;
 
-    String name, code, score;
+    String name, code, score, json;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +31,35 @@ public class MainActivity extends AppCompatActivity {
         name = getIntent().getStringExtra("name");
         code = getIntent().getStringExtra("code");
         score = getIntent().getStringExtra("score");
+        json = getIntent().getStringExtra("json");
+
+        SharedPreferences prefer = getSharedPreferences("prefs", MODE_PRIVATE);
+
+        String userName = prefer.getString("lastName", "NO_NAME");
+        String userCode = prefer.getString("lastCode", "NO_CODE");
+        String userGrade = prefer.getString("lastScore", "0");
+
+        /*SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
+        String jsonSP = preferences.getString("lastName", "NO_OBJ");*/
 
         studentListItem = "";
 
-        if(name != null && code != null && score != null)
+        loadPreferences();
+
+        if(userName != null && userCode != null && userGrade != null)
         {
-            studentListItem += name + ", " + code + " / pts: " + score + "\n";
+            studentListItem += userName + ", " + userCode + ", " + userGrade;
         }
+
+       /* if(jsonSP == "NO_OBJ")
+        {
+
+        }
+        else
+        {
+            Gson gson = new Gson();
+            studentListItem += jsonSP;
+        }*/
 
         //else
         //{
@@ -55,4 +81,16 @@ public class MainActivity extends AppCompatActivity {
         Intent switchActivity = new Intent(this, RegisterScreen.class);
         startActivity(switchActivity);
     }
+
+    public void loadPreferences()
+    {
+       /* SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
+
+        String userName = preferences.getString("lastName", "NO_NAME");
+        String userCode = preferences.getString("lastCode", "NO_CODE");
+        String userGrade = preferences.getString("lastScore", "0");
+
+        studentListItem += userName + ", " + userCode + ", " + userGrade;*/
+    }
+
 }
