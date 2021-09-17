@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     String studentListItem;
 
     String name, code, score, json;
+    String userName, userCode, userGrade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences prefer = getSharedPreferences("prefs", MODE_PRIVATE);
 
-        String userName = prefer.getString("lastName", "NO_NAME");
-        String userCode = prefer.getString("lastCode", "NO_CODE");
-        String userGrade = prefer.getString("lastScore", "0");
+        userName = prefer.getString("lastName", "NO_NAME");
+        userCode = prefer.getString("lastCode", "NO_CODE");
+        userGrade = prefer.getString("lastScore", "0");
 
         /*SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
         String jsonSP = preferences.getString("lastName", "NO_OBJ");*/
@@ -79,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
     public void switchScreen()
     {
         Intent switchActivity = new Intent(this, RegisterScreen.class);
+        switchActivity.putExtra("nameOrig", userName);
+        switchActivity.putExtra("codeOrig", userCode);
         startActivity(switchActivity);
     }
 

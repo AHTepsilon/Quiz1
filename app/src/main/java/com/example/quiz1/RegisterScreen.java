@@ -16,7 +16,7 @@ public class RegisterScreen extends AppCompatActivity {
     Button continueBtn;
     EditText textName, textCode;
 
-    String name, code;
+    String name, code, nameOrig, codeOrig;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,8 @@ public class RegisterScreen extends AppCompatActivity {
                     switchScreen();
                 }
         );
+
+        Log.d("<<<" ,nameOrig + ", " + codeOrig);
     }
 
     public void switchScreen()
@@ -40,9 +42,16 @@ public class RegisterScreen extends AppCompatActivity {
         name = textName.getText().toString();
         code = textCode.getText().toString();
 
-        if(!name.isEmpty() && !code.isEmpty())
-        {
+        nameOrig = getIntent().getStringExtra("nameOrig");
+        codeOrig = getIntent().getStringExtra("codeOrig");
 
+
+        Log.d("<<<" ,nameOrig + ", " + codeOrig);
+        Log.d("<<<", name + ", " + code);
+
+
+        if((!name.isEmpty() && !code.isEmpty()) || !(code == codeOrig))
+        {
             Intent switchActivity = new Intent(this, FirstQuestion.class);
             switchActivity.putExtra("name", name);
             switchActivity.putExtra("code", code);
